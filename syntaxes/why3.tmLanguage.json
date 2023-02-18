@@ -7,27 +7,52 @@
     },
     {
       "include": "#strings"
+    },
+    {
+      "include": "#comment"
     }
   ],
   "repository": {
     "keywords": {
       "patterns": [
         {
-          "name": "keyword.control.why3",
-          "match": "\\b(if|while|for|return)\\b"
+          "name": "keyword.control.whyKeyword",
+          "match": "\\b(abstract|any|as|break|by|coinductive|constant|continue|else|epsilon|exists|exception|forall|fun|function|ghost|if|in|inductive|lavel|let|meta|model|mutable|not|partial|predicate|private|raise|rec|return|so|then|type|val|while|with)\\b"
+        },
+        {
+          "name": "constant.numeric.whyBoolean",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "support.type.whyType",
+          "match": "\\b(bool|float|int|list|map|option|real|range|array|ref|unit)\\b"
+        },
+        {
+          "name": "entity.other.attribute-name.whySpec",
+          "match": "\\b(absurd|alias|assert|assume|check|diverges|ensures|invariant|pure|raises|reads|requires|returns|variant|writes|at|old)\\b"
+        },
+        {
+          "name": "keyword.operator.whyOperator",
+          "match": "(->|<->|/\\\\|\\\\/|&&|<-|\\+|-|\\*|/|\\=|>|<)"
         }
       ]
     },
     "strings": {
-      "name": "string.quoted.double.why3",
+      "name": "string.quoted.double.why3String",
       "begin": "\"",
       "end": "\"",
       "patterns": [
         {
-          "name": "constant.character.escape.why3",
+          "name": "constant.character.escape.why3Escape",
           "match": "\\\\."
         }
       ]
+    },
+    "comment": {
+      "name": "comment.block",
+      "begin": "\\(\\*",
+      "end": "\\*\\)",
+      "patterns": [{ "include": "#comment" }]
     }
   },
   "scopeName": "source.mlw"
