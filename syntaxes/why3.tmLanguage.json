@@ -3,33 +3,59 @@
   "name": "Why3",
   "patterns": [
     {
-      "include": "#keywords"
+      "include": "#constructor"
+    },
+    {
+      "include": "#keyword"
     },
     {
       "include": "#strings"
     },
     {
       "include": "#comment"
+    },
+    {
+      "include": "#import"
     }
   ],
   "repository": {
-    "keywords": {
+    "keyword": {
       "patterns": [
         {
           "name": "keyword.control.whyKeyword",
-          "match": "\\b(abstract|any|as|break|by|coinductive|constant|continue|else|epsilon|exists|exception|forall|fun|function|ghost|if|in|inductive|lavel|let|meta|model|mutable|not|partial|predicate|private|raise|rec|return|so|then|type|val|while|with)\\b"
+          "match": "\\b(abstract|any|as|break|by|coinductive|constant|continue|else|epsilon|exists|exception|forall|fun|function|ghost|if|in|inductive|lavel|let|meta|model|mutable|not|partial|predicate|private|raise|rec|return|so|then|type|val|while|for|to|downto|do|done|lemma|predicate|try|match|with|begin|end|label|module|theory|scope)\\b"
         },
         {
           "name": "constant.numeric.whyBoolean",
           "match": "\\b(true|false)\\b"
         },
         {
-          "name": "support.type.whyType",
-          "match": "\\b(bool|float|int|list|map|option|real|range|array|ref|unit)\\b"
+          "name": "constant.numeric.whyInt",
+          "match": "\\b\\d(\\d|_)+\\b"
+        },
+        {
+          "name": "constant.numeric.whyInt",
+          "match": "\\b0[xX]\\h(\\h|_)+\\b"
+        },
+        {
+          "name": "constant.numeric.whyInt",
+          "match": "\\b0[oO][0-7]([0-7]|_)+\\b"
+        },
+        {
+          "name": "constant.numeric.whyInt",
+          "match": "\\b0[bB][01]([01]|_)+\\b"
+        },
+        {
+          "name": "constant.numeric.whyFloat",
+          "match": "\\b\\d+[eE][-+]?\\d+\\b"
         },
         {
           "name": "entity.other.attribute-name.whySpec",
-          "match": "\\b(absurd|alias|assert|assume|check|diverges|ensures|invariant|pure|raises|reads|requires|returns|variant|writes|at|old)\\b"
+          "match": "\\b(absurd|alias|assert|assume|check|diverges|ensures|invariant|pure|raises|reads|requires|returns|variant|writes)\\b"
+        },
+        {
+          "name": "support.type.whyType",
+          "match": "\\b(bool|float|int|list|map|option|real|range|array|ref|unit|old|at)\\b"
         },
         {
           "name": "keyword.operator.whyOperator",
@@ -53,6 +79,24 @@
       "begin": "\\(\\*",
       "end": "\\*\\)",
       "patterns": [{ "include": "#comment" }]
+    },
+    "import": {
+      "begin": "\\b(use|clone)\\b",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.whyKeyword"
+        }
+      },
+      "end": "\\b(\\w+\\.)+",
+      "endCaptures": {
+        "1": {
+          "name": "support.type.whyType"
+        }
+      }
+    },
+    "constructor": {
+      "name": "support.type.whyType",
+      "match": "[A-Z][\\'a-zA-Z0-9]*"
     }
   },
   "scopeName": "source.mlw"
