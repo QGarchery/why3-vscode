@@ -16,61 +16,63 @@
     },
     {
       "include": "#import"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#definition"
     }
   ],
   "repository": {
     "keyword": {
       "patterns": [
         {
-          "name": "keyword.control.whyKeyword",
-          "match": "\\b(abstract|any|as|break|by|coinductive|constant|continue|else|epsilon|exists|exception|forall|fun|function|ghost|if|in|inductive|lavel|let|meta|model|mutable|not|partial|predicate|private|raise|rec|return|so|then|type|val|while|for|to|downto|do|done|lemma|predicate|try|match|with|begin|end|label|module|theory|scope)\\b"
+          "match": "\\b(abstract|any|as|break|by|continue|else|epsilon|exception|fun|ghost|if|in|lavel|meta|model|mutable|not|partial|private|raise|return|so|then|type|while|for|to|downto|do|done|try|match|with|begin|end|label|module|theory|scope)\\b",
+          "name": "keyword.control"
         },
         {
-          "name": "constant.numeric.whyBoolean",
-          "match": "\\b(true|false)\\b"
+          "match": "\\b(true|false)",
+          "name": "constant.numeric"
         },
         {
-          "name": "constant.numeric.whyInt",
-          "match": "\\b\\d(\\d|_)+\\b"
+          "match": "\\b\\d(\\d|_)*",
+          "name": "constant.numeric"
         },
         {
-          "name": "constant.numeric.whyInt",
-          "match": "\\b0[xX]\\h(\\h|_)+\\b"
+          "match": "\\b0[xX]\\h(\\h|_)+",
+          "name": "constant.numeric"
         },
         {
-          "name": "constant.numeric.whyInt",
-          "match": "\\b0[oO][0-7]([0-7]|_)+\\b"
+          "match": "\\b0[oO][0-7]([0-7]|_)+",
+          "name": "constant.numeric"
         },
         {
-          "name": "constant.numeric.whyInt",
-          "match": "\\b0[bB][01]([01]|_)+\\b"
+          "match": "\\b0[bB][01]([01]|_)+",
+          "name": "constant.numeric"
         },
         {
-          "name": "constant.numeric.whyFloat",
-          "match": "\\b\\d+[eE][-+]?\\d+\\b"
+          "match": "\\b\\d+[eE][-+]?\\d+",
+          "name": "constant.numeric"
         },
         {
-          "name": "entity.other.attribute-name.whySpec",
-          "match": "\\b(absurd|alias|assert|assume|check|diverges|ensures|invariant|pure|raises|reads|requires|returns|variant|writes)\\b"
+          "match": "\\b(absurd|alias|assert|assume|check|diverges|ensures|invariant|pure|raises|reads|requires|returns|variant|writes)\\b",
+          "name": "entity.other.attribute-name"
         },
         {
-          "name": "support.type.whyType",
-          "match": "\\b(bool|float|int|list|map|option|real|range|array|ref|unit|old|at)\\b"
-        },
-        {
-          "name": "keyword.operator.whyOperator",
-          "match": "(->|<->|/\\\\|\\\\/|&&|<-|\\+|-|\\*|/|\\=|>|<)"
+          "match": "(->|<->|/\\\\|\\\\/|&&|<-|\\+|-|\\*|/|\\=|>|<)",
+          "name": "keyword.control"
         }
       ]
     },
     "strings": {
-      "name": "string.quoted.double.why3String",
+      "name": "string.quoted.double",
       "begin": "\"",
       "end": "\"",
       "patterns": [
         {
-          "name": "constant.character.escape.why3Escape",
-          "match": "\\\\."
+          "match": "\\\\.",
+          "name": "constant.character.escape"
         }
       ]
     },
@@ -80,23 +82,85 @@
       "end": "\\*\\)",
       "patterns": [{ "include": "#comment" }]
     },
+    "definition": {
+      "match": "((?:\\s*(?:let|rec|function|predicate|ref|lemma|axiom|goal|inductive|coinductive|val|constant))+)\\s+([a-zA-Z0-9_]+)",
+      "captures": {
+        "1": {
+          "name": "keyword.control"
+        },
+        "2": {
+          "name": "variable.parameter"
+        }
+      }
+    },
+    "types": {
+      "patterns": [
+        {
+          "begin": "(forall|exists)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control"
+            }
+          },
+          "end": "(\\.)",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.control"
+            }
+          },
+          "patterns": [
+            {
+              "match": ":\\s*([^,\\.]+)",
+              "captures": {
+                "1": {
+                  "name": "support.type"
+                }
+              }
+            },
+            {
+              "match": ",",
+              "name": "keyword.control"
+            }
+          ]
+        },
+        {
+          "match": ":([^\\)\\(=]+)=",
+          "captures": {
+            "1": {
+              "name": "support.type"
+            }
+          }
+        },
+        {
+          "match": "([a-zA-Z0-9_]+)\\s*:\\s*([^\\)\\(=]+)[$;\\)]",
+          "captures": {
+            "1": {
+              "name": "variable.parameter"
+            },
+            "2": {
+              "name": "support.type"
+            }
+          }
+        }
+      ]
+    },
     "import": {
       "begin": "\\b(use|clone)\\b",
       "beginCaptures": {
         "1": {
-          "name": "keyword.control.whyKeyword"
+          "name": "keyword.control"
         }
       },
       "end": "\\b(\\w+\\.)+",
       "endCaptures": {
         "1": {
-          "name": "support.type.whyType"
+          "name": "support.type"
         }
       }
     },
     "constructor": {
-      "name": "support.type.whyType",
-      "match": "[A-Z][\\'a-zA-Z0-9]*"
+      "match": "[A-Z][\\'a-zA-Z0-9]*",
+      "name": "support.type"
     }
   },
   "scopeName": "source.mlw"
