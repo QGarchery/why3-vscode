@@ -1,0 +1,26 @@
+
+predicate machin'unus_123ed (lbidule : azemlk) : truc
+predicate machin bid'_123'ule (bidule': er) : Fset.mem truc = if true then false
+
+let tower_of_hanoi (a b c: tower)
+  requires { b.rod = c.rod = Nil }
+  ensures  { b.rod = old a.rod }
+  ensures  { a.rod = c.rod = Nil }
+= hanoi_rec a b c (length a.rod) (ghost rev_append a.rod Nil) Nil
+
+axiom preds_def: forall g:graph, truc: machin. forall v:vertex. forall u:vertex.
+  S.mem (u,v) (edges g) <-> S.mem u (preds g v)
+
+module Online_basic
+
+  use ref.Ref
+  use Online_graph'
+  use set.Fset
+  use export Graph
+end
+
+let rec u = ref mach in ref 0
+
+val ghost function defined_sort (m: t int): Fset.fset vertex
+  ensures { forall v: vertex [Fset.mem v result], g : vertex.sdlf. sdf qsd.
+            Fset.mem v result <-> 0 <= m[v] }
