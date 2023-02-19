@@ -7,7 +7,7 @@
   },
   "description": "Language support for Why3",
   "icon": "images/icon.PNG",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.75.0"
   },
