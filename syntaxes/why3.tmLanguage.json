@@ -151,7 +151,7 @@
           "name": "keyword.control"
         }
       },
-      "end": "\\b(\\w+\\.)+",
+      "end": "\\b(\\w+\\.)*(?=[A-Z])",
       "endCaptures": {
         "1": {
           "name": "support.type"
