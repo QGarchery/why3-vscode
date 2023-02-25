@@ -1,4 +1,4 @@
-let  ref truc = 2
+let  ref foo = 2
 
 val tortoise_and_hare (c, d: int) (a: int, b : int) : (mu:int, lambda:int) 
 
@@ -14,7 +14,7 @@ if sum > !maxsum then begin
   clo := lo; chi := hi
 end
 
-let tortoise_and_hare (c : int) : truc = 
+let tortoise_and_hare (c : int) : my_type = 
   [@vc:do_not_keep_trace] (* traceability info breaks the proofs *)
   let mu, lambda = periodicity () in
   equality mu lambda
