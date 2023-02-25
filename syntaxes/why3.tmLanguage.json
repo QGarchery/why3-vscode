@@ -82,10 +82,30 @@
       "end": "\\*\\)",
       "patterns": [{ "include": "#comment" }]
     },
+    "variableDeclaration": {
+      "begin": "\\(",
+      "patterns": [
+        {
+          "match": ","
+        },
+        {
+          "match": "([^:,\\(\\)]*):?(((?<=:)[^:,\\)]*)?)",
+          "captures": {
+            "1": {
+              "name": "variable.parameter"
+            },
+            "2": {
+              "name": "support.type"
+            }
+          }
+        }
+      ],
+      "end": "\\)"
+    },
     "definition": {
       "patterns": [
         {
-          "begin": "\\b((?:\\s*(?:let\\s+rec|let\\sref|let|ghost|function|predicate|inductive|coinductive|val|constant|lemma))+)\\s+([a-zA-Z0-9_\\']+)",
+          "begin": "\\b((?:\\s*(?:let\\s+rec|let\\s+ref|let|ghost|function|predicate|inductive|coinductive|val|constant|lemma))+)\\s+([a-zA-Z0-9_\\']+|\\([^\\)]+\\))",
           "beginCaptures": {
             "1": {
               "name": "keyword.control"
@@ -96,22 +116,14 @@
           },
           "patterns": [
             {
-              "match": "\\(([^:]*):([^\\)]*)\\)",
-              "captures": {
-                "1": {
-                  "name": "variable.parameter"
-                },
-                "2": {
-                  "name": "support.type"
-                }
-              }
+              "include": "#variableDeclaration"
             },
             {
               "match": "([a-zA-Z0-9_\\']+)",
               "name": "variable.parameter"
             }
           ],
-          "end": "(?=$|:|=)"
+          "end": "(?=:|$|=)"
         },
         {
           "match": "\\b(lemma|axiom|goal)\\s+([a-zA-Z0-9_\\']+)\\s*:",
@@ -123,31 +135,24 @@
               "name": "variable.parameter"
             }
           }
+        },
+        {
+          "begin": ":",
+          "patterns": [
+            {
+              "include": "#variableDeclaration"
+            },
+            {
+              "match": "[^\\)\\(=\\]]+",
+              "name": "support.type"
+            }
+          ],
+          "end": "($|=)"
         }
       ]
     },
     "types": {
-      "patterns": [
-        {
-          "match": ":([^=]+)($|=)",
-          "captures": {
-            "1": {
-              "name": "support.type"
-            }
-          }
-        },
-        {
-          "match": "([a-zA-Z0-9_\\']+)\\s*:((\\.[^\\s]|[^\\.\\)\\[,])+)(,|\\)|\\[|;|\\.\\s+)",
-          "captures": {
-            "1": {
-              "name": "variable.parameter"
-            },
-            "2": {
-              "name": "support.type"
-            }
-          }
-        }
-      ]
+      "patterns": []
     },
     "import": {
       "begin": "\\b(use|clone)\\b",

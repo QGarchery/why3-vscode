@@ -23,8 +23,3 @@ let rec u = ref mach in ref 0
 val ghost function defined_sort (m: t int): Fset.fset vertex
   ensures { forall v: vertex [Fset.mem v result], g : vertex.sdlf. sdf qsd.
             Fset.mem v result <-> 0 <= m[v] }
-
-val ([]<-) (m: t 'a) (k: key) (v: 'a): unit
-  writes { m }
-  ensures { m = (old m)[k <- v] }
-
