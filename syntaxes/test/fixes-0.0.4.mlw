@@ -14,8 +14,8 @@ if sum > !maxsum then begin
   clo := lo; chi := hi
 end
 
-let tortoise_and_hare (c : int)
-= [@vc:do_not_keep_trace] (* traceability info breaks the proofs *)
+let tortoise_and_hare (c : int) = 
+  [@vc:do_not_keep_trace] (* traceability info breaks the proofs *)
   let mu, lambda = periodicity () in
   equality mu lambda
 

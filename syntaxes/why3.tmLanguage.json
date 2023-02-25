@@ -119,11 +119,24 @@
               "include": "#variableDeclaration"
             },
             {
+              "begin": ":",
+              "patterns": [
+                {
+                  "include": "#variableDeclaration"
+                },
+                {
+                  "match": "[^\\)\\(=\\]]+",
+                  "name": "support.type"
+                }
+              ],
+              "end": "(?=$|=)"
+            },
+            {
               "match": "([a-zA-Z0-9_\\']+)",
               "name": "variable.parameter"
             }
           ],
-          "end": "(?=:|$|=)"
+          "end": "($|=)"
         },
         {
           "match": "\\b(lemma|axiom|goal)\\s+([a-zA-Z0-9_\\']+)\\s*:",
@@ -135,19 +148,6 @@
               "name": "variable.parameter"
             }
           }
-        },
-        {
-          "begin": ":",
-          "patterns": [
-            {
-              "include": "#variableDeclaration"
-            },
-            {
-              "match": "[^\\)\\(=\\]]+",
-              "name": "support.type"
-            }
-          ],
-          "end": "($|=)"
         }
       ]
     },
