@@ -36,3 +36,11 @@ type foo = { mutable bar: int }
 type foo = {
    mutable bar: int; (* not ghost, not ghost mutable *)
 }
+
+lemma preds_def: forall g:graph, truc: machin. forall v:vertex. forall u:vertex.
+  S.mem (u,v) (edges g) <-> S.mem u (preds g v)
+
+use mach.int.Int63
+
+let r' = sqrt r (2.0 * eps) (Int.(*) 2 n) eps0 in
+  if (r' + eps) * (r' + eps) <= r then r' + eps else r'

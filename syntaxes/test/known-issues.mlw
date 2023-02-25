@@ -1,0 +1,15 @@
+val random (m n: int) : int ensures { m <= result <= n }
+
+val partition (a: array int) (m n: int) (i j: ref int) (ghost x: ref int) :
+  unit
+  requires { 0 <= m < n < length a }
+
+val function weight vertex vertex : int (* edge weight, if there is an edge *)
+  ensures { result >= 0 }
+
+inductive pe' (e : list token) =
+   | Plus' : forall e1 e2. pe' e1 -> pt e2 -> pe' (e1 ++ Cons PLUS e2)
+   | T' : forall t. pt t -> pe' t
+with pt (e : list token) =
+    | Paren' : forall e. pe' e -> pt (Cons LPAREN (e ++ (Cons RPAREN Nil)))
+    | Int' : pt (Cons INT Nil)

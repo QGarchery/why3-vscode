@@ -28,7 +28,7 @@
     "keyword": {
       "patterns": [
         {
-          "match": "\\b(abstract|any|as|break|by|continue|else|epsilon|exception|fun|ghost|ref|if|in|lavel|meta|model|mutable|not|partial|private|raise|return|so|then|type|while|for|to|downto|do|done|try|match|with|begin|end|label|module|theory|scope)\\b",
+          "match": "\\b(abstract|any|as|break|by|continue|else|epsilon|exception|fun|ghost|ref|if|in|lavel|meta|model|mutable|not|partial|private|raise|return|so|then|type|while|for|to|downto|do|done|try|match|with|begin|end|label|at|old|module|theory|scope)\\b",
           "name": "keyword.control"
         },
         {
@@ -60,7 +60,7 @@
           "name": "entity.other.attribute-name"
         },
         {
-          "match": "(->|<->|/\\\\|\\\\/|&&|<-|\\+|-|\\*|/|\\=|>|<)",
+          "match": "(->|<->|/\\\\|\\\\/|&&|<-|\\+\\.|\\+|-\\.|-|\\*\\.|\\*|/\\.|/|\\=|>|<)",
           "name": "keyword.control"
         }
       ]
@@ -78,7 +78,7 @@
     },
     "comment": {
       "name": "comment.block",
-      "begin": "\\(\\*",
+      "begin": "\\(\\*[^\\)]",
       "end": "\\*\\)",
       "patterns": [{ "include": "#comment" }]
     },
@@ -104,6 +104,17 @@
     },
     "definition": {
       "patterns": [
+        {
+          "match": "\\b(lemma|axiom|goal)\\s+([a-zA-Z0-9_\\']+)\\s*:",
+          "captures": {
+            "1": {
+              "name": "keyword.control"
+            },
+            "2": {
+              "name": "variable.parameter"
+            }
+          }
+        },
         {
           "begin": "\\b((?:\\s*(?:let\\s+rec|let\\s+ref|let|ghost|function|predicate|inductive|coinductive|val|constant|lemma))+)\\s+([a-zA-Z0-9_\\']+|\\([^\\)]+\\))",
           "beginCaptures": {
@@ -137,17 +148,6 @@
             }
           ],
           "end": "(?=$|=)"
-        },
-        {
-          "match": "\\b(lemma|axiom|goal)\\s+([a-zA-Z0-9_\\']+)\\s*:",
-          "captures": {
-            "1": {
-              "name": "keyword.control"
-            },
-            "2": {
-              "name": "variable.parameter"
-            }
-          }
         },
         {
           "match": "([a-zA-Z0-9_\\']+)\\s*:(?=[^=])([^;}]+)(?=;|})",
@@ -194,7 +194,7 @@
           "name": "keyword.control"
         }
       },
-      "end": "\\b(\\w+\\.)*(?=[A-Z])",
+      "end": "((?:\\w+\\.)*)(?=[A-Z])",
       "endCaptures": {
         "1": {
           "name": "support.type"
