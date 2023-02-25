@@ -14,19 +14,20 @@ if sum > !maxsum then begin
   clo := lo; chi := hi
 end
 
-let tortoise_and_hare (c : int) = 
+let tortoise_and_hare (c : int) : truc = 
   [@vc:do_not_keep_trace] (* traceability info breaks the proofs *)
   let mu, lambda = periodicity () in
   equality mu lambda
 
 axiom OneClass :
-  forall u:uf_pure. num u = 1 ->
-  forall x y:int. 0 <= x < size u -> 0 <= y < size u -> same u x y
+  forall a u : uf_pure.
+  num u = 1 ->
+  forall x, y:int. 0 <= x < size u -> 0 <= y < size u -> same u x y
 
 type non_det = abstract { mutable non_det_field : non_det_magic }
 
 type foo = {
-  mutable bar1: int; (* simple comment *);
+  mutable bar1: int; (* simple comment *)
   mutable bar2: float; 
 }
 

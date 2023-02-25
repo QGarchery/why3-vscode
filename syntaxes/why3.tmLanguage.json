@@ -18,7 +18,7 @@
       "include": "#import"
     },
     {
-      "include": "#types"
+      "include": "#quantifiers"
     },
     {
       "include": "#definition"
@@ -28,7 +28,7 @@
     "keyword": {
       "patterns": [
         {
-          "match": "\\b(forall|exists|abstract|any|as|break|by|continue|else|epsilon|exception|fun|ghost|ref|if|in|lavel|meta|model|mutable|not|partial|private|raise|return|so|then|type|while|for|to|downto|do|done|try|match|with|begin|end|label|module|theory|scope)\\b",
+          "match": "\\b(abstract|any|as|break|by|continue|else|epsilon|exception|fun|ghost|ref|if|in|lavel|meta|model|mutable|not|partial|private|raise|return|so|then|type|while|for|to|downto|do|done|try|match|with|begin|end|label|module|theory|scope)\\b",
           "name": "keyword.control"
         },
         {
@@ -136,7 +136,7 @@
               "name": "variable.parameter"
             }
           ],
-          "end": "($|=)"
+          "end": "(?=$|=)"
         },
         {
           "match": "\\b(lemma|axiom|goal)\\s+([a-zA-Z0-9_\\']+)\\s*:",
@@ -151,8 +151,30 @@
         }
       ]
     },
-    "types": {
-      "patterns": []
+    "quantifiers": {
+      "begin": "\\b(forall|exists)\\b",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control"
+        }
+      },
+      "patterns": [
+        {
+          "match": ","
+        },
+        {
+          "match": "([^:,\\.]*):?(((?<=:)([^:,\\.]|\\.[^\\s])*)?)",
+          "captures": {
+            "1": {
+              "name": "variable.parameter"
+            },
+            "2": {
+              "name": "support.type"
+            }
+          }
+        }
+      ],
+      "end": "\\.\\s"
     },
     "import": {
       "begin": "\\b(use|clone)\\b",
