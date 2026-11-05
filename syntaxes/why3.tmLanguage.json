@@ -28,11 +28,11 @@
     "keyword": {
       "patterns": [
         {
-          "match": "\\b(abstract|any|as|break|by|continue|else|epsilon|exception|fun|ghost|ref|if|in|lavel|meta|model|mutable|not|partial|private|raise|return|so|then|type|while|for|to|downto|do|done|try|match|with|begin|end|label|at|old|module|theory|scope)\\b",
+          "match": "\\b(abstract|any|as|break|by|continue|else|epsilon|exception|fun|ghost|ref|if|in|meta|model|mutable|not|partial|private|raise|return|so|then|type|while|for|to|downto|do|done|try|match|with|begin|end|label|at|old|module|theory|scope)\\b",
           "name": "keyword.control"
         },
         {
-          "match": "\\b(true|false)",
+          "match": "\\b(true|false)\\b",
           "name": "constant.numeric"
         },
         {

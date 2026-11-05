@@ -3,15 +3,27 @@
   "name": "why3-vscode",
   "publisher": "qgarchery",
   "repository": {
-    "url": "https://github.com/QGarchery/why3-vscode"
+    "type": "git",
+    "url": "https://github.com/QGarchery/why3-vscode.git"
   },
   "description": "Language support for Why3",
+  "license": "MIT",
+  "keywords": [
+    "why3",
+    "whyml",
+    "mlw",
+    "verification",
+    "formal methods"
+  ],
+  "homepage": "https://github.com/QGarchery/why3-vscode#readme",
+  "bugs": {
+    "url": "https://github.com/QGarchery/why3-vscode/issues"
+  },
   "icon": "images/icon.PNG",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.75.0"
   },
-  "main": "./out/extension.js",
   "categories": [
     "Programming Languages"
   ],
@@ -24,7 +36,8 @@
           "why3"
         ],
         "extensions": [
-          ".mlw"
+          ".mlw",
+          ".why"
         ],
         "configuration": "./language-configuration.json"
       }
