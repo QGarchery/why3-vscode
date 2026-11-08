@@ -136,18 +136,18 @@
                   "include": "#variableDeclaration"
                 },
                 {
-                  "match": "(?:(?!\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)[^\\)\\(=\\]\\n])+",
+                  "match": "(?:(?!\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure|lemma|axiom|goal)\\b)[^\\)\\(=\\]\\n])+",
                   "name": "support.type"
                 }
               ],
-              "end": "(?!\\G)(?<!\\n)(?=$)|(?==|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)"
+              "end": "(?!\\G)(?<!\\n)(?=$)|(?==|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure|lemma|axiom|goal)\\b)"
             },
             {
               "match": "([a-zA-Z0-9_\\']+)",
               "name": "variable.parameter"
             }
           ],
-          "end": "(?=$|=|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)"
+          "end": "(?=$|=|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure|lemma|axiom|goal)\\b)"
         },
         {
           "match": "([a-zA-Z0-9_\\']+)\\s*:(?=[^=])([^;}]+)(?=;|})",
