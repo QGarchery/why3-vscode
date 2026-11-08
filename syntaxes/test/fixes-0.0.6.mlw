@@ -8,3 +8,6 @@ function f (g: int -> (t 'a)) :
   int -> (t (option 'a))
 axiom f_def: forall g: int -> (t 'a), i: int.
   f g i = i
+
+val function weight vertex vertex : int (* edge weight, if there is an edge *)
+  ensures { result >= 0 }

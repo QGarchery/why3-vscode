@@ -1,6 +1,3 @@
-val function weight vertex vertex : int (* edge weight, if there is an edge *)
-  ensures { result >= 0 }
-
 inductive pe' (e : list token) =
    | Plus' : forall e1 e2. pe' e1 -> pt e2 -> pe' (e1 ++ Cons PLUS e2)
    | T' : forall t. pt t -> pe' t
