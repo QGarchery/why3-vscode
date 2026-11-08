@@ -1,7 +1,3 @@
-val partition (a: array int) (m n: int) (i j: ref int) (ghost x: ref int) :
-  unit
-  requires { 0 <= m < n < length a }
-
 val function weight vertex vertex : int (* edge weight, if there is an edge *)
   ensures { result >= 0 }
 

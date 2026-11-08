@@ -1,1 +1,5 @@
 val random (m n: int) : int ensures { m <= result <= n }
+
+val partition (a: array int) (m n: int) (i j: ref int) (ghost x: ref int) :
+  unit
+  requires { 0 <= m < n < length a }

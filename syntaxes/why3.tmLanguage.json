@@ -130,17 +130,17 @@
               "include": "#variableDeclaration"
             },
             {
-              "begin": ":",
+              "begin": ":[ \\t]*",
               "patterns": [
                 {
                   "include": "#variableDeclaration"
                 },
                 {
-                  "match": "(?:(?!\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)[^\\)\\(=\\]])+",
+                  "match": "(?:(?!\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)[^\\)\\(=\\]\\n])+",
                   "name": "support.type"
                 }
               ],
-              "end": "(?=$|=|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)"
+              "end": "(?!\\G)(?<!\\n)(?=$)|(?==|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)"
             },
             {
               "match": "([a-zA-Z0-9_\\']+)",
