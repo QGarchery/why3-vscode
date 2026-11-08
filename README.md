@@ -13,6 +13,16 @@ Install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/i
 
 Highlighting of some declarations is imperfect; see `syntaxes/test/known-issues.mlw`.
 
+## Publishing
+
+Bump `version` in `package.json`.
+
+From the repository root:
+
+```
+npx ovsx publish -p <token>
+```
+
 ## License
 
 MIT, see [LICENSE](LICENSE).

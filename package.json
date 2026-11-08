@@ -20,7 +20,7 @@
     "url": "https://github.com/QGarchery/why3-vscode/issues"
   },
   "icon": "images/icon.PNG",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.75.0"
   },
