@@ -1,0 +1,1 @@
+val random (m n: int) : int ensures { m <= result <= n }

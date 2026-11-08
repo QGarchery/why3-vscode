@@ -136,18 +136,18 @@
                   "include": "#variableDeclaration"
                 },
                 {
-                  "match": "[^\\)\\(=\\]]+",
+                  "match": "(?:(?!\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)[^\\)\\(=\\]])+",
                   "name": "support.type"
                 }
               ],
-              "end": "(?=$|=)"
+              "end": "(?=$|=|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)"
             },
             {
               "match": "([a-zA-Z0-9_\\']+)",
               "name": "variable.parameter"
             }
           ],
-          "end": "(?=$|=)"
+          "end": "(?=$|=|\\b(?:requires|ensures|returns|raises|reads|writes|alias|variant|diverges|pure)\\b)"
         },
         {
           "match": "([a-zA-Z0-9_\\']+)\\s*:(?=[^=])([^;}]+)(?=;|})",
