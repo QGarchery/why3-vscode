@@ -11,7 +11,8 @@ Install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/i
 
 ## Known issues
 
-Highlighting of some declarations is imperfect; see `syntaxes/test/known-issues.mlw`.
+Highlighting of some declarations is imperfect.
+See `syntaxes/test/known-issues.mlw`.
 
 ## Publishing
 
