@@ -2,7 +2,7 @@
 
 Syntax highlighting and language configuration (comments, brackets, auto-closing pairs) for [Why3](https://www.why3.org/) files (`.mlw` and `.why`).
 
-Install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=qgarchery.why3-vscode).
+Install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=qgarchery.why3-vscode) or [Open VSX](https://open-vsx.org/extension/qgarchery/why3-vscode).
 
 ## Features
 
