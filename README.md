@@ -13,19 +13,6 @@ Install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/i
 
 Highlighting of some declarations is imperfect; see `syntaxes/test/known-issues.mlw`.
 
-## Publishing
-
-Bump `version` in `package.json` and push.
-
-Run the Publish workflow from the Actions tab.
-It starts only through `workflow_dispatch` and publishes that version to the Marketplace.
-
-Open VSX, from the repository root:
-
-```
-npx ovsx publish -p <token>
-```
-
 ## License
 
 MIT, see [LICENSE](LICENSE).
