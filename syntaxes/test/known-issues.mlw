@@ -1,6 +1,42 @@
+(* pt and its parameter list, after with, are not highlighted *)
 inductive pe' (e : list token) =
    | Plus' : forall e1 e2. pe' e1 -> pt e2 -> pe' (e1 ++ Cons PLUS e2)
    | T' : forall t. pt t -> pe' t
 with pt (e : list token) =
     | Paren' : forall e. pe' e -> pt (Cons LPAREN (e ++ (Cons RPAREN Nil)))
     | Int' : pt (Cons INT Nil)
+
+(* ghost and ref are part of the parameter name *)
+let exchange (a: array int) (ghost m n: int) (ref i j: int) : unit
+= ()
+
+(* partial is highlighted as the defined name *)
+let partial array_of_list (l: list 'a) : array 'a
+= l
+
+(* axiom is not highlighted *)
+clone monoid.ComputableMonoid as M with axiom .
+
+(* x55, b1010 and o755 are not highlighted as numbers *)
+let intg = 12
+let mask = 0x55
+let bits = 0b1010
+let mode = 0o755
+
+(* foo] let a = x in a = 0 is highlighted as a type *)
+let attribute_example (x: int) : int
+  ensures { [@expl:foo] let a = x in a = 0 }
+  ensures { let a = x in a = 0 }
+= x
+
+(* range and float are not highlighted *)
+type a = < range 22 46 >
+type t = < float 8 24 >
+
+(* function is highlighted as the defined name, and lemma_name is not highlighted *)
+let rec ghost function
+  lemma_name (x: int) : int
+= x
+
+(* n >= 0 is highlighted as the type of n *)
+lemma quantifier_dot: forall n:int.n >= 0
